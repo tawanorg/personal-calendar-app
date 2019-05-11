@@ -41,7 +41,7 @@ export default class App extends React.Component {
       return (
         <Provider store={store}>
           <View style={styles.container}>
-            {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
+            {Platform.OS === 'ios' && <StatusBar barStyle="light-content" />}
             <AppNavigator />
           </View>
         </Provider>
@@ -60,7 +60,10 @@ export default class App extends React.Component {
         ...Icon.Ionicons.font,
         // We include SpaceMono because we use it in HomeScreen.js. Feel free
         // to remove this if you are not using it in your app
-        'space-mono': require('./assets/fonts/SpaceMono-Regular.ttf'),
+        'Lato-Black': require('./assets/fonts/Lato/Lato-Black.ttf'),
+        'Lato-Bold': require('./assets/fonts/Lato/Lato-Bold.ttf'),
+        'Lato-Light': require('./assets/fonts/Lato/Lato-Light.ttf'),
+        'Lato-Regular': require('./assets/fonts/Lato/Lato-Regular.ttf'),
       }),
     ]);
   };

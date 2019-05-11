@@ -9,5 +9,6 @@ export default {
     height,
   },
   gutterWidth: 15,
+  borderRadius: 6,
   isSmallDevice: width < 375,
 };
