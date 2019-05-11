@@ -4,11 +4,10 @@ import {
   Text,
   View,
 } from 'react-native';
-import Header from 'components/Header';
 
 export default class extends React.Component {
   static navigationOptions = {
-    header: <Header />,
+    title: 'HomePage'
   };
 
   render() {

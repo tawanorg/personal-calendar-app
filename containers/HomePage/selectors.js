@@ -8,6 +8,4 @@ export const makeSelectDomain = createSelector(
   (state) => state
 )
  
-export {
-  makeSelectDomain,
-}
+export default stateDomain;
