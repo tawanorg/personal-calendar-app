@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import {View, Text} from 'react-native';
 import {xdateToData} from '../../interface';
 import XDate from 'xdate';
@@ -53,21 +54,38 @@ class ReservationListItem extends Component {
   render() {
     const {reservation, date} = this.props.item;
     let content;
+    let firstItem = false;
+    let header;
+
     if (reservation) {
-      const firstItem = date ? true : false;
+      firstItem = date ? true : false;
       content = this.props.renderItem(reservation, firstItem);
     } else {
       content = this.props.renderEmptyDate(date);
     }
+
+    if (this.props.renderHeadFirstItem) {
+      header = this.props.renderHeadFirstItem(date);
+    }
+
     return (
       <View style={this.styles.container}>
         {this.renderDate(date, reservation)}
         <View style={{flex:1}}>
+          {firstItem && header}
           {content}
         </View>
       </View>
     );
   }
+}
+
+ReservationListItem.propTypes = {
+  renderHeadFirstItem: PropTypes.func,
+}
+
+ReservationListItem.defaultProps = {
+  renderHeadFirstItem: null,
 }
 
 export default ReservationListItem;

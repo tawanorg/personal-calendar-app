@@ -49,6 +49,8 @@ export default class AgendaView extends Component {
     renderDay: PropTypes.func,
     // specify how agenda knob should look like
     renderKnob: PropTypes.func,
+    // specific calendar item header
+    renderHeadFirstItem: PropTypes.func,
     // specify how empty date content with no items should be rendered
     renderEmptyDay: PropTypes.func,
     // specify what should be rendered instead of ActivityIndicator
@@ -275,6 +277,7 @@ export default class AgendaView extends Component {
   renderReservations() {
     return (
       <ReservationsList
+        renderHeadFirstItem={this.props.renderHeadFirstItem}
         refreshControl={this.props.refreshControl}
         refreshing={this.props.refreshing}
         onRefresh={this.props.onRefresh}

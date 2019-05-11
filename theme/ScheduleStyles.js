@@ -30,15 +30,20 @@ export const calendarTheme = {
   textDayHeaderFontSize: 15,
 };
 
+const calendarDayComponentStyle = {
+  width: 50,
+  position: 'relative',
+};
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#FFFFFF',
   },
   calendarItem: {
-    marginHorizontal: Layout.gutterWidth,
+    marginRight: Layout.gutterWidth,
     marginVertical: Layout.gutterWidth / 2,
-  }
+  },
 });
 
 export default styles;

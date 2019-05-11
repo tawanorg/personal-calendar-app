@@ -6,6 +6,7 @@ import Colors from 'app-constants/Colors';
 import Layouts from 'app-constants/Layout';
 import BarKind from 'components/BarKind';
 import Avatar from 'components/Avatar';
+import styles from './styles';
 
 const CalendarItem = ({
   style,
@@ -39,6 +40,7 @@ const CalendarItem = ({
           <Avatar 
             size={32} 
             name="Porntip Saelim"
+            imageUrl="https://media.licdn.com/dms/image/C5103AQE91wA7kjgLoA/profile-displayphoto-shrink_800_800/0?e=1562803200&v=beta&t=Nkj45e5Scs9xVZD3wSwosFlH3N9X_8yt-UbN715IJ24"
           />
         </View>
       </View>
@@ -53,44 +55,5 @@ CalendarItem.propTypes = {
 CalendarItem.defaultProps = {
   kind: 'default',
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-    alignItems: 'flex-start',
-    justifyContent: 'flex-start',
-    backgroundColor: Colors.secondary,
-    borderTopRightRadius: Layouts.borderRadius,
-    borderBottomRightRadius: Layouts.borderRadius,
-  },
-  wrapper: {
-    flexDirection: 'column',
-    paddingHorizontal: Layouts.gutterWidth / 2,
-    paddingVertical: Layouts.gutterWidth / 2,
-  },
-  timeContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  text: {
-    fontSize: 15,
-    lineHeight: 24,
-    fontFamily: 'Lato-Regular',
-    fontWeight: "400",
-  },
-  textTime: {
-    marginLeft: 5,
-    color: Colors.primary,
-    fontFamily: 'Lato-Bold',
-    fontWeight: "600"
-  },
-  textLocation: {
-    color: Colors.subText,
-    fontSize: 12,
-  },
-  textTitle: {
-    fontSize: 16,
-  }
-})
 
 export default CalendarItem;

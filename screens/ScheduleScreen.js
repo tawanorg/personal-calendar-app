@@ -1,13 +1,17 @@
 import React from 'react';
 import {
-  StyleSheet,
   Text,
   View,
 } from 'react-native';
+
 import { Agenda } from 'vendors/Calendar';
 import ScheduleHeader from 'components/ScheduleHeader';
 import CalendarItem from 'components/CalendarItem';
 import styles, { calendarTheme } from 'theme/ScheduleStyles';
+import CalendarDay from 'components/CalendarDay';
+import DisabledCalendarDay from 'components/CalendarDay/Disabled';
+import CalendarItemHeader from 'components/CalendarItemHeader';
+import EmptyCalendarItem from 'components/CalendarItem/EmptyCalendarItem';
 
 export default class extends React.Component {
   static navigationOptions = {
@@ -30,13 +34,19 @@ export default class extends React.Component {
           // considered that the date in question is not yet loaded
           items={this.state.items}
           loadItemsForMonth={this.loadItems.bind(this)}
-          selected={'2017-05-16'}
+          selected="2019-05-11"
           renderItem={this.renderItem.bind(this)}
           renderEmptyDate={this.renderEmptyDate.bind(this)}
           rowHasChanged={this.rowHasChanged.bind(this)}
-          // agenda theme
+          onCalendarToggled={() => alert('onCalendarToggled')}
+          // specify how each date should be rendered. day can be undefined if the item is not first in that day.
+          renderHeadFirstItem={(date) => <CalendarItemHeader date={date} />}
+          renderDay={(date, item) => date ? (
+            <CalendarDay />
+          ) : (
+            <DisabledCalendarDay />
+          )}
           theme={calendarTheme}
-          // agenda container style
         />
       </View>
     );
@@ -76,10 +86,14 @@ export default class extends React.Component {
     );
   }
 
-  renderEmptyDate() {
-    return (
-      <View style={styles.emptyDate}><Text>This is empty date!</Text></View>
-    );
+  renderEmptyDate(date) {
+    console.log('date', date)
+    return [
+      <CalendarItemHeader date={date} />,
+      <EmptyCalendarItem
+        style={styles.calendarItem}
+      />
+    ]
   }
 
   rowHasChanged(r1, r2) {

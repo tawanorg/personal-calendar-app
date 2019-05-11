@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { Text, View, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import Colors from 'app-constants/Colors';
 import Layouts from 'app-constants/Layout';
-import avatar from 'assets/images/avatar.jpeg';
+import defaultAvatar from 'assets/images/avatar.jpeg';
 
-const Avatar = ({ size, name, style }) => {
+const Avatar = ({ size, name, style, imageUrl }) => {
   return (
     <TouchableOpacity style={[styles.container, {
       width: size,
@@ -25,7 +25,7 @@ const Avatar = ({ size, name, style }) => {
           borderRadius: (size - 2) / 2,
         }]}>
           <Image
-            source={avatar}
+            source={imageUrl ? { uri: imageUrl } : defaultAvatar}
             resizeMode="cover"
             style={[styles.avatar, {
               width: size - 4,
@@ -45,11 +45,13 @@ const Avatar = ({ size, name, style }) => {
 Avatar.propTypes = {
   size: PropTypes.number,
   name: PropTypes.string,
+  imageUrl: PropTypes.string,
 }
 
 Avatar.defaultProps = {
   size: 45,
-  name: null
+  name: null,
+  imageUrl: null,
 }
 
 const styles = StyleSheet.create({

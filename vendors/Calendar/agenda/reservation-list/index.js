@@ -17,6 +17,8 @@ class ReactComp extends Component {
     rowHasChanged: PropTypes.func,
     // specify how each item should be rendered in agenda
     renderItem: PropTypes.func,
+    // specific header compoennt
+    renderHeadFirstItem: PropTypes.func,
     // specify how each date should be rendered. day can be undefined if the item is not first in that day.
     renderDay: PropTypes.func,
     // specify how empty date content with no items should be rendered
@@ -119,6 +121,7 @@ class ReactComp extends Component {
           renderEmptyDate={this.props.renderEmptyDate}
           theme={this.props.theme}
           rowHasChanged={this.props.rowHasChanged}
+          renderHeadFirstItem={this.props.renderHeadFirstItem}
         />
       </View>
     );
